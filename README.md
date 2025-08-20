@@ -1,3 +1,121 @@
+# AI-Powered PDF to Excel Extraction Tool
+
+This repository contains an advanced AI-powered tool for extracting tables from PDF files and converting them to Excel format (.xlsx). The tool uses machine learning algorithms to intelligently detect and extract tabular data with high accuracy.
+
+## 🚀 Features
+
+- **AI-Powered Table Detection**: Uses advanced machine learning algorithms (via Camelot) for intelligent table recognition
+- **Multiple Parsing Strategies**: Automatically tries different extraction methods for optimal results
+- **Excel Output**: Exports to native Excel format (.xlsx) with proper formatting
+- **Intelligent Data Cleaning**: AI-enhanced data preprocessing and validation
+- **Batch Processing**: Process multiple PDF files simultaneously
+- **Error Handling**: Comprehensive error handling and logging
+- **Progress Tracking**: Real-time progress reporting and detailed logs
+
+## 📦 Quick Start
+
+### Option 1: Automated Setup
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+### Option 2: Manual Setup
+```bash
+# Install dependencies
+pip3 install camelot-py pandas openpyxl tabulate PyPDF2 numpy
+
+# Create directories
+mkdir -p input_pdfs output_excel
+```
+
+## 🎯 Usage
+
+### Basic Usage
+1. Place your PDF files in the `input_pdfs` directory
+2. Run the extraction tool:
+   ```bash
+   python3 pdf_to_excel_ai.py
+   ```
+3. Check the `output_excel` directory for your Excel files
+
+### Advanced Usage
+```bash
+# Custom input/output directories
+python3 pdf_to_excel_ai.py -i /path/to/pdfs -o /path/to/output
+
+# Verbose logging for debugging
+python3 pdf_to_excel_ai.py --verbose
+
+# Get help
+python3 pdf_to_excel_ai.py --help
+```
+
+### Demo Mode
+Run a quick demonstration:
+```bash
+python3 demo.py
+```
+
+## 🧠 AI Features
+
+The tool incorporates several AI-powered features:
+
+1. **Smart Table Detection**: Uses multiple machine learning models to detect tables with different structures
+2. **Intelligent Parsing**: Automatically selects the best parsing strategy based on document analysis
+3. **Data Quality Enhancement**: AI-powered data cleaning and validation
+4. **Format Recognition**: Automatically detects headers, data types, and table structure
+5. **Error Recovery**: Intelligent fallback strategies when primary methods fail
+
+## 📊 Output Format
+
+- **Excel Files**: Native .xlsx format with proper formatting
+- **Multiple Sheets**: Each table becomes a separate worksheet
+- **Auto-sizing**: Column widths automatically adjusted for readability
+- **Data Preservation**: Maintains original data integrity while cleaning noise
+
+## 🔧 Technical Details
+
+### Dependencies
+- `camelot-py`: Core PDF table extraction engine
+- `pandas`: Data manipulation and analysis
+- `openpyxl`: Excel file creation and formatting
+- `PyPDF2`: PDF validation and metadata extraction
+- `numpy`: Numerical operations and data cleaning
+
+### Parsing Strategies
+1. **Stream-based**: For tables without clear borders
+2. **Lattice-based**: For tables with defined grid lines
+3. **Custom Areas**: For complex layouts with manual area definition
+
+### AI Algorithms
+- Machine learning-based table boundary detection
+- Intelligent text classification and grouping
+- Automated data type inference
+- Smart header detection and separation
+
+## 📁 File Structure
+
+```
+├── pdf_to_excel_ai.py      # Main extraction script
+├── demo.py                 # Demonstration script
+├── setup.sh                # Automated setup script
+├── requirements.txt        # Python dependencies
+├── input_pdfs/             # Place PDF files here
+├── output_excel/           # Excel files generated here
+├── examples/               # Example notebooks and samples
+└── README.md              # This file
+```
+
+## 🚀 Examples
+
+Check the `examples/` directory for:
+- Jupyter notebook with advanced usage patterns
+- Sample PDF files for testing
+- Advanced configuration examples
+
+---
+
 # Configuring a Repl
 
 Every new repl comes with a `.replit` and a `replit.nix` file that let you configure your repl to do just about anything in any language!
@@ -11,7 +129,14 @@ The `replit.nix` file should look something like the example below. The `deps` a
 ```nix
 { pkgs }: {
     deps = [
-        pkgs.cowsay
+        pkgs.python312
+        pkgs.python312Packages.pip
+        pkgs.python312Packages.pandas
+        pkgs.python312Packages.numpy
+        pkgs.python312Packages.openpyxl
+        pkgs.python312Packages.requests
+        pkgs.ghostscript
+        pkgs.tkinter
     ];
 }
 ```
